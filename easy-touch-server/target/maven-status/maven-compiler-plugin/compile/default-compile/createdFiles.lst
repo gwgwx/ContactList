@@ -1,0 +1,11 @@
+online\touch\easy\server\resource\AccountResource.class
+online\touch\easy\server\resource\ApplicationConfig.class
+online\touch\easy\server\resource\AttachmentResource.class
+online\touch\easy\server\resource\ActivityResource.class
+online\touch\easy\server\resource\ContactResource.class
+online\touch\easy\server\resource\PhoneLogResource.class
+online\touch\easy\server\resource\AbstractFacade.class
+online\touch\easy\server\resource\OpportunityResource.class
+online\touch\easy\server\resource\ProjectResource.class
+online\touch\easy\server\resource\BusinessNoteResource.class
+online\touch\easy\server\resource\UserResource.class

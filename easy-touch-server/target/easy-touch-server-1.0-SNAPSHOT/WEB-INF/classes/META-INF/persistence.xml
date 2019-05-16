@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="online.touch.easy_pu" transaction-type="JTA">
+    <jta-data-source>java:/jboss/datasources/ExampleDS</jta-data-source>
+    <class>online.touch.easy.common.model.Account</class>
+    <class>online.touch.easy.common.model.Activity</class>
+    <class>online.touch.easy.common.model.ActivityAttachment</class>
+    <class>online.touch.easy.common.model.ActivityContact</class>
+    <class>online.touch.easy.common.model.Attachment</class>
+    <class>online.touch.easy.common.model.BusinessNote</class>
+    <class>online.touch.easy.common.model.Campaign</class>
+    <class>online.touch.easy.common.model.Contact</class>
+    <class>online.touch.easy.common.model.ContactAttachment</class>
+    <class>online.touch.easy.common.model.ContactMain</class>
+    <class>online.touch.easy.common.model.Opportunity</class>
+    <class>online.touch.easy.common.model.PhoneLog</class>
+    <class>online.touch.easy.common.model.Project</class>
+    <class>online.touch.easy.common.model.ProjectTask</class>
+    <class>online.touch.easy.common.model.User</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
