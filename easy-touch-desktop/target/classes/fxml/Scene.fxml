@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="online.touch.easy.desktop.FXMLController">
+    <children>
+        <BorderPane fx:id="mainBorderPane" layoutX="-225.0" layoutY="-121.0" prefHeight="321.0" prefWidth="545.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <VBox BorderPane.alignment="CENTER">
+                    <children>
+                        <MenuBar>
+                            <menus>
+                                <Menu mnemonicParsing="false" text="File">
+                                    <items>
+                                        <MenuItem fx:id="cmdOpenSelected" disable="true" mnemonicParsing="false" text="Open Selected Items" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Close" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="Edit">
+                                    <items>
+                                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#deleteButtonAction" text="Delete" />
+                                        <MenuItem fx:id="selectAllMenuItem" mnemonicParsing="false" onAction="#selectAllAction" text="Select All" />
+                                    </items>
+                                </Menu>
+                        <Menu mnemonicParsing="false" text="Contact Management">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#loadAccountListAction" text="Account List" />
+                              <MenuItem mnemonicParsing="false" onAction="#loadContactListAction" text="Contact List" />
+                              <MenuItem mnemonicParsing="false" onAction="#loadProjectAction" text="Project" />
+                              <MenuItem mnemonicParsing="false" onAction="#loadOpportunityAction" text="Opportunity" />
+                              <MenuItem mnemonicParsing="false" onAction="#loadUserAction" text="User Account" />
+                           </items>
+                        </Menu>
+                                <Menu mnemonicParsing="false" text="Help">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                        </MenuBar>
+                        <ToolBar>
+                            <items>
+                                <Button mnemonicParsing="false" onAction="#newButtonAction" text="New" />
+                                <Button fx:id="editButton" mnemonicParsing="false" onAction="#editButtonAction" text="Edit" />
+                                <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteButtonAction" text="Delete" />
+                            </items>
+                        </ToolBar>
+                    </children>
+                </VBox>
+            </top>
+        </BorderPane>
+    </children>
+</AnchorPane>

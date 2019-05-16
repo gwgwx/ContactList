@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import org.controlsfx.glyphfont.Glyph?>
+
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="online.touch.easy.desktop.accounts.AccountFormController">
+   <children>
+      <VBox prefHeight="579.0" prefWidth="876.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar prefHeight="17.0" prefWidth="635.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                     <items>
+                        <Menu mnemonicParsing="false" text="New" visible="false">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Person" />
+                           </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveAndNew" text="Save and New" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveAndClose" text="Save and Close" />
+                        <SeparatorMenuItem mnemonicParsing="false" visible="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" visible="false" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Print Preview" />
+                        <MenuItem mnemonicParsing="false" text="Print" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                        <MenuItem fx:id="miUndo" mnemonicParsing="false" text="Undo" visible="false" />
+                        <MenuItem fx:id="miCut" mnemonicParsing="false" onAction="#cut" text="Cut">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="miCopy" mnemonicParsing="false" onAction="#copy" text="Copy">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="miPaste" mnemonicParsing="false" onAction="#paste" text="Paste">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="meClear" mnemonicParsing="false" onAction="#clear" text="Clear" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="miSelectAll" mnemonicParsing="false" onAction="#selectAll" text="Select All">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="View">
+                     <items>
+                        <Menu mnemonicParsing="false" text="Next">
+                           <items>
+                              <MenuItem fx:id="miNext" mnemonicParsing="false" onAction="#nextRecord" text="Item" />
+                              <MenuItem mnemonicParsing="false" text="Last Record" visible="false" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Previous">
+                           <items>
+                              <MenuItem fx:id="miPrevious" mnemonicParsing="false" onAction="#previousRecord" text="Item" />
+                              <MenuItem mnemonicParsing="false" text="First Record" visible="false" />
+                           </items>
+                        </Menu>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <ToolBar>
+               <items>
+                  <Button fx:id="saveAndClose" mnemonicParsing="false" onAction="#saveAndClose" text="Save and Close" />
+                  <Button fx:id="saveAndNew" mnemonicParsing="false" onAction="#saveAndNew" text="Save and New" />
+                  <Separator orientation="VERTICAL" />
+                  <Button fx:id="btnPrevious" disable="true" mnemonicParsing="false" onAction="#previousRecord">
+                     <graphic>
+                        <Glyph fontFamily="FontAwesome" icon="ARROW_UP" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Previous Report" />
+                     </tooltip>
+                  </Button>
+                  <Button fx:id="btnNext" disable="true" mnemonicParsing="false" onAction="#nextRecord">
+                     <graphic>
+                        <Glyph fontFamily="FontAwesome" icon="ARROW_DOWN" />
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Next Report" />
+                     </tooltip>
+                  </Button>
+               </items>
+            </ToolBar>
+            <TabPane VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <tabs>
+                  <Tab closable="false" text="General">
+                     <content>
+                        <GridPane hgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                              <RowConstraints vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <TextField fx:id="accountNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label text="Account Name" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label text="Email" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Label>
+                              <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <HBox alignment="CENTER_LEFT" GridPane.columnSpan="2">
+                                 <children>
+                                    <Label text="Account">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator HBox.hgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                                 <children>
+                                    <Label text="Addresses">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator HBox.hgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                              <Label text="Office" GridPane.rowIndex="2" />
+                              <Label text="Assigned to" GridPane.rowIndex="3" />
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label text="Internet">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator HBox.hgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                              <Label text="Display As" GridPane.rowIndex="6" />
+                              <Label text="Web Address" GridPane.rowIndex="7" />
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="134.0" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                                 <children>
+                                    <Label text="Phone Numbers">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator HBox.hgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                              <Label text="Business" GridPane.rowIndex="9" />
+                              <Label text="Business Fax" GridPane.rowIndex="10" />
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="258.0" GridPane.columnSpan="4" GridPane.rowIndex="11">
+                                 <children>
+                                    <Label text="Business Contacts">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator HBox.hgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                              <Label text="Business Contacts" GridPane.rowIndex="12" />
+                              <Label text="Business" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="323.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label text="Source Information">
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator HBox.hgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Separator>
+                                 </children>
+                              </HBox>
+                              <Label text="Source" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Label text="Initialted By" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <TextField fx:id="officeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="assignedField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="displayAsField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <TextField fx:id="webAddressField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <TextField fx:id="businessNumberField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <TextField fx:id="businessFaxField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                              <TextField fx:id="businessContactsField" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                              <TextField fx:id="businessAddressField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="sourceField" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <TextField fx:id="intialtedField" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </Tab>
+                  <Tab closable="false" text="Details">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane hgap="10.0" layoutX="68.0" layoutY="36.0" vgap="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" GridPane.columnSpan="2">
+                                       <children>
+                                          <Label text="Company Information">
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Separator HBox.hgrow="ALWAYS">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Separator>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                                       <children>
+                                          <Label text="Communication">
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Separator HBox.hgrow="ALWAYS">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Separator>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Account Number" GridPane.rowIndex="1" />
+                                    <Label text="Type of Business" GridPane.rowIndex="2" />
+                                    <Label text="Revenue" GridPane.rowIndex="3" />
+                                    <Label text="Ticker Symbol" GridPane.rowIndex="4" />
+                                    <Label text="Employees" GridPane.rowIndex="5" />
+                                    <Label text="Territories" GridPane.rowIndex="6" />
+                                    <HBox alignment="CENTER_LEFT" layoutX="320.0" layoutY="10.0" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                                       <children>
+                                          <Label text="Classification">
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Separator HBox.hgrow="ALWAYS">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Separator>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Active" GridPane.rowIndex="8" />
+                                    <Label text="Account Rating" GridPane.rowIndex="9" />
+                                    <Label text="Payment Status" GridPane.rowIndex="10" />
+                                    <Label text="Area of Interest" GridPane.rowIndex="11" />
+                                    <Label text="Preferred Method" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label text="Do not call" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Label text="Do not fax" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                    <Label text="Do not email" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                    <Label text="Do not mail" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                    <HBox alignment="CENTER_LEFT" layoutX="320.0" layoutY="10.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                       <children>
+                                          <Label text="Comments">
+                                             <padding>
+                                                <Insets right="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Separator HBox.hgrow="ALWAYS">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets top="5.0" />
+                                             </padding>
+                                          </Separator>
+                                       </children>
+                                    </HBox>
+                                    <Label text="Notes" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                                    <CheckBox fx:id="call" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                    <CheckBox fx:id="fax" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                    <CheckBox fx:id="dontEmail" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                    <CheckBox fx:id="mail" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                    <TextField fx:id="accountNumberField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="businessTypeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="revenueField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="tickerSymbolField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <TextField fx:id="employeesField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="territoriesField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <ComboBox fx:id="paymentStatus" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                    <TextField fx:id="interestAreaField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                    <TextArea fx:id="notesArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.rowSpan="5" />
+                                    <ComboBox fx:id="rating" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab closable="false" text="History">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane layoutX="111.0" layoutY="53.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <center>
+                                    <VBox spacing="5.0">
+                                       <children>
+                                          <TextField prefHeight="25.0" prefWidth="502.0" promptText="Search History" />
+                                          <TableView fx:id="historyTable" prefHeight="314.0" prefWidth="503.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                              <TableColumn fx:id="colItemType" prefWidth="75.0" text="Item Type" />
+                                              <TableColumn fx:id="colSubject" prefWidth="75.0" text="Subject" />
+                                                <TableColumn fx:id="colLinkedTo" prefWidth="75.0" text="Linked To" />
+                                                <TableColumn prefWidth="75.0" text="Created" />
+                                                <TableColumn prefWidth="75.0" text="Created By" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </VBox>
+                                 </center>
+                                 <left>
+                                    <VBox spacing="10.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <MenuButton alignment="CENTER" mnemonicParsing="false" prefWidth="80.0" text="New">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#newBusinessNote" text="Business Note" />
+                                              <MenuItem mnemonicParsing="false" onAction="#newPhoneLog" text="Phone Log" />
+                                                <MenuItem mnemonicParsing="false" onAction="#newOpportunity" text="Opportunity" />
+                                            </items>
+                                          </MenuButton>
+                                          <Button alignment="CENTER" mnemonicParsing="false" prefWidth="80.0" text="Remove" />
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets left="10.0" right="10.0" top="50.0" />
+                                       </BorderPane.margin>
+                                    </VBox>
+                                 </left>
+                                 <top>
+                                    <Label text="Communication History" BorderPane.alignment="TOP_LEFT">
+                                       <BorderPane.margin>
+                                          <Insets bottom="10.0" left="10.0" top="10.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </top>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
